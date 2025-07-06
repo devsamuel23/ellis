@@ -1,0 +1,12 @@
+services:
+  api:
+    # Constrói a imagem a partir do Dockerfile no diretório atual ('.').
+    build: .
+    container_name: gestao_escolar
+    # Comando para iniciar a aplicação com hot-reloading, ideal para desenvolvimento.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      # Monta o diretório atual no contêiner para refletir as alterações de código em tempo real.
+      - .:/app
+    ports:
+      - "8000:8000"
